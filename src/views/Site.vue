@@ -1,3 +1,18 @@
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+function navegarPara() {
+    //console.log(router)
+    //router.push("/home")
+    //router.push({ path: '/home' })
+    //router.replace('/home')
+    router.replace({ path: '/home' })
+
+}
+</script>
+
 <template>
     <div>
         <nav class="navbar navbar-light bg-light menu-superior">
@@ -30,7 +45,7 @@
                             <div class="mb-3">
                                 <input type="email" class="form-control" placeholder="E-mail">
                             </div>
-                            <button class="btn btn-primary">Me inscrever</button>
+                            <button class="btn btn-primary" @click="navegarPara">Me inscrever</button>
                         </div>
                     </div>
                 </div>
