@@ -5,11 +5,22 @@ const router = useRouter()
 
 function navegarPara() {
     //console.log(router)
-    //router.push("/home")
+    
+    //coletar os dados de e-mail e senha
+    //realizar uma requisição http de autenticação
+    //receber o token de autorização
+    
+    router.push("/home")
     //router.push({ path: '/home' })
+    
     //router.replace('/home')
-    router.replace({ path: '/home' })
-
+    //router.replace({ path: '/home' })
+    
+    //router.forward() //avançar no histórico de rotas do navegador
+    //router.back() //retornar no histórico de rotas do navegador
+    
+    //router.go(2) //avançar ou retornar no histórico de rotas do navegador
+    //router.go(-2) //avançar ou retornar no histórico de rotas do navegador
 }
 </script>
 
