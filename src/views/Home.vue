@@ -64,4 +64,17 @@
     border-right: none;
 }
 
+/*
+.router-link-active {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+*/
+.router-link-exact-active {
+    color: #fff;
+    background-color: #0d6eff;
+    border-color: #0d6eff;
+}
+
 </style>
