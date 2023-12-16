@@ -1,3 +1,3 @@
 <template>
-    <h3>Contratos</h3>
+  <h3>Contratos</h3>
 </template>

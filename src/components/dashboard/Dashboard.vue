@@ -1,3 +1,3 @@
 <template>
-  <h3>Serviços</h3>
+  <h3>Dashboard</h3>
 </template>

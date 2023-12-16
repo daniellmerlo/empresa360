@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 //createWebHashHistory
+import Dashboard from '@/components/dashboard/Dashboard.vue'
 import Vendas from '@/components/vendas/Vendas.vue'
 import Leads from '@/components/vendas/Leads.vue'
 import Contratos from '@/components/vendas/Contratos.vue'
@@ -9,32 +10,35 @@ import Login from '@/views/Login.vue'
 import Site from '@/views/Site.vue'
 
 const routes = [
-    {
-        path: '/', //localhost:5173/
-        component: Site
-    },
-    {
-        path: '/home', //localhost:5173/home
-        component: Home,
+  {
+    path: '/', //localhost:5173/
+    component: Site
+  },
+  {
+    path: '/home', //localhost:5173/home
+    component: Home,
+    children: [
+      {
+        path: 'vendas',
+        component: Vendas,
         children: [
-            { path: 'vendas', component: Vendas, children: 
-                [
-                    { path: 'leads', component: Leads },
-                    { path: 'contratos', component: Contratos}
-                ]
-            },
-            { path: 'servicos', component: Servicos }
+          { path: 'leads', component: Leads },
+          { path: 'contratos', component: Contratos }
         ]
-    },
-    {
-        path: '/login', //localhost:5173/login
-        component: Login
-    }
+      },
+      { path: 'servicos', component: Servicos },
+      { path: 'dashboard', component: Dashboard }
+    ]
+  },
+  {
+    path: '/login', //localhost:5173/login
+    component: Login
+  }
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes
+  history: createWebHistory(),
+  routes
 })
 
 export default router
