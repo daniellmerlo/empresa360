@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted} from 'vue'
+import { onMounted } from 'vue'
 
 import ApiMixns from '@/mixins/ApiMixins'
 
@@ -9,7 +9,6 @@ onMounted(() => {
   var url = 'http://localhost:3000/leads'
   getDadosApi(url)
 })
-
 </script>
 
 <template>
