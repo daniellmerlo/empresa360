@@ -8,8 +8,10 @@ const { dados, getDadosApi } = ApiMixns()
 const route = useRoute()
 
 watch(route, (to) => {
-  var url = `http://localhost:3000/servicos/${to.params.id}`
-  getDadosApi(url)
+  if (to.params.id != undefined) {
+    var url = `http://localhost:3000/servicos/${to.params.id}`
+    getDadosApi(url)
+  }
 })
 
 onMounted(() => {
