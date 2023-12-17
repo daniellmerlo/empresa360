@@ -67,6 +67,17 @@ const routes = [
   {
     path: '/login', //localhost:5173/login
     component: Login
+  },
+  { path: '/redirecionamento-1', redirect: '/home/servicos' },
+  { path: '/redirecionamento-2', redirect: { name: 'leads' } },
+  { path: '/redirecionamento-3', redirect: '/home/vendas' },
+  { path: '/redirecionamento-4', redirect: { name: 'vendaspadrao' } },
+  {
+    path: '/redirecionamento-5',
+    redirect: (to) => {
+      console.log(to)
+      return { name: 'vendaspadrao' }
+    }
   }
 ]
 
