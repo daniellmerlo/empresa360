@@ -1,11 +1,16 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import ApiMixns from '@/mixins/ApiMixins'
 
 const { dados, getDadosApi } = ApiMixns()
 
 const route = useRoute()
+const router = useRouter()
+
+function voltar() {
+  router.push({ name: 'leads' })
+}
 
 onMounted(() => {
   var url = `http://localhost:3000/leads/${route.params.id}`
@@ -33,7 +38,8 @@ onMounted(() => {
       <input type="text" readonly class="form-control" :value="dados.telefone" />
     </div>
   </div>
-  <div class="col-auto">
+  <div class="col-auto d-flex justify-content-between">
+    <button type="button" class="btn btn-warning" @click="voltar">Voltar</button>&nbsp;
     <button type="button" class="btn btn-primary">Atualizar</button>
   </div>
 </template>
