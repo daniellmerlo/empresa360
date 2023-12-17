@@ -20,7 +20,9 @@ onMounted(() => {
         <div class="card" style="width: 11rem">
           <img class="card-img-top" :src="`/img/${item.icone}`" />
           <div class="card-body text-center">
-            <p class="card-text">{{ item.servico }}</p>
+            <router-link :to="{ name: 'servico', params: { id: item.id } }">
+              <p class="card-text">{{ item.servico }}</p>
+            </router-link>
           </div>
         </div>
       </div>

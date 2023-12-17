@@ -1,11 +1,16 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import ApiMixns from '@/mixins/ApiMixins'
 
 const { dados, getDadosApi } = ApiMixns()
 
 const route = useRoute()
+
+watch(route, (to) => {
+  var url = `http://localhost:3000/servicos/${to.params.id}`
+  getDadosApi(url)
+})
 
 onMounted(() => {
   var url = `http://localhost:3000/servicos/${route.params.id}`
