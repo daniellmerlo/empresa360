@@ -1,3 +1,29 @@
+<script setup>
+import { onMounted } from 'vue'
+
+import ApiMixns from '@/mixins/ApiMixins'
+
+const { dados, getDadosApi } = ApiMixns()
+
+onMounted(() => {
+  var url = 'http://localhost:3000/servicos'
+  getDadosApi(url)
+})
+</script>
+
 <template>
-  <h3>Serviços</h3>
+  <div>
+    <h3>Serviços</h3>
+    <hr>
+    <div class="row">
+      <div class="col" v-for="item in dados" :key="item.id">
+        <div class="card" style="width: 11rem;">
+          <img class="card-img-top" :src="`/img/${item.icone}`">
+          <div class="card-body text-center">
+            <p class="card-text">{{ item.servico }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
