@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 //createWebHashHistory
 import Dashboard from '@/components/dashboard/Dashboard.vue'
+import DashboardRodape from '@/components/dashboard/DashboardRodape.vue'
 import Vendas from '@/components/vendas/Vendas.vue'
 import VendasPadrao from '@/components/vendas/VendasPadrao.vue'
 import Leads from '@/components/vendas/Leads.vue'
@@ -49,7 +50,11 @@ const routes = [
           }
         ]
       },
-      { name: 'dashboard', path: 'dashboard', component: Dashboard }
+      {
+        name: 'dashboard',
+        path: 'dashboard',
+        components: { default: Dashboard, rodape: DashboardRodape }
+      }
     ]
   },
   {
