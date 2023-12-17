@@ -1,19 +1,15 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted} from 'vue'
 
-const dados = ref([])
+import ApiMixns from '@/mixins/ApiMixins'
 
-function getDadosApi(url) {
-  fetch(url)
-    .then((response) => response.json())
-    .then((response) => {
-      dados.value = response
-    })
-}
+const { dados, getDadosApi } = ApiMixns()
 
 onMounted(() => {
-  getDadosApi('http://0.0.0.0:3000/leads')
+  var url = 'http://localhost:3000/leads'
+  getDadosApi(url)
 })
+
 </script>
 
 <template>

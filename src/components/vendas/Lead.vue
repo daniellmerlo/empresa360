@@ -1,17 +1,11 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
+import { onMounted } from "vue"
+import { useRoute } from "vue-router"
+import ApiMixns from '@/mixins/ApiMixins'
+
+const { dados, getDadosApi } = ApiMixns()
 
 const route = useRoute();
-const dados = ref({})
-
-function getDadosApi(url) {
-    fetch(url)
-        .then(response => response.json())
-        .then(response => {
-            dados.value = response
-        })
-}
 
 onMounted(() => {
     var url = `http://localhost:3000/leads/${route.params.id}`
