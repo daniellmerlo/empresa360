@@ -25,7 +25,7 @@ const routes = [
         component: Vendas,
         children: [
           { name: 'leads', path: 'leads', component: Leads },
-          { name: 'lead', path: 'lead/:id', component: Lead },
+          { name: 'lead', path: 'lead/:id', component: Lead }, //feito com a aula anterior
           { name: 'contratos', path: 'contratos', component: Contratos },
           { name: 'vendaspadrao', path: '', component: VendasPadrao }
         ]
