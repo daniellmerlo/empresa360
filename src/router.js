@@ -8,6 +8,8 @@ import Lead from '@/components/vendas/Lead.vue'
 import Contratos from '@/components/vendas/Contratos.vue'
 import Servico from '@/components/servicos/Servico.vue'
 import Servicos from '@/components/servicos/Servicos.vue'
+import Indicadores from '@/components/servicos/Indicadores.vue'
+import Opcoes from '@/components/servicos/Opcoes.vue'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Site from '@/views/Site.vue'
@@ -35,7 +37,17 @@ const routes = [
         name: 'servicos',
         path: 'servicos',
         component: Servicos,
-        children: [{ name: 'servico', path: ':id', component: Servico }]
+        children: [
+          {
+            name: 'servico',
+            path: ':id',
+            components: {
+              default: Servico,
+              opcoes: Opcoes,
+              indicadores: Indicadores
+            }
+          }
+        ]
       },
       { name: 'dashboard', path: 'dashboard', component: Dashboard }
     ]
