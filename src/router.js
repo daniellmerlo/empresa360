@@ -24,14 +24,14 @@ const routes = [
         path: 'vendas',
         component: Vendas,
         children: [
-          { path: 'leads', component: Leads },
-          { path: 'lead/:id', component: Lead },
-          { path: 'contratos', component: Contratos },
-          { path: '', component: VendasPadrao }
+          { name: 'leads', path: 'leads', component: Leads },
+          { name: 'lead', path: 'lead/:id', component: Lead },
+          { name: 'contratos', path: 'contratos', component: Contratos },
+          { name: 'vendaspadrao', path: '', component: VendasPadrao }
         ]
       },
-      { path: 'servicos', component: Servicos },
-      { path: 'dashboard', component: Dashboard }
+      { name: 'servicos', path: 'servicos', component: Servicos },
+      { name: 'dashboard', path: 'dashboard', component: Dashboard }
     ]
   },
   {

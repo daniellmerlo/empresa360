@@ -18,34 +18,34 @@
         <router-link
           class="list-group-item list-group-item-action"
           active-exact-class="active"
-          to="/home/dashboard"
+          :to="{ name: 'dashboard' }"
         >
           <i class="bi bi-speedometer2"></i> Dashboard
         </router-link>
         <router-link
           class="list-group-item list-group-item-action"
-          to="/home/vendas"
+          :to="{ name: 'vendaspadrao' }"
           active-exact-class="active"
         >
           <i class="bi bi-cart"></i> Vendas
         </router-link>
         <router-link
           class="list-group-item list-group-item-action"
-          to="/home/vendas/leads"
+          :to="{ name: 'leads' }"
           active-exact-class="active"
         >
           <i class="bi bi-caret-right"></i> Lead
         </router-link>
         <router-link
           class="list-group-item list-group-item-action"
-          to="/home/vendas/contratos"
+          :to="{ name: 'contratos' }"
           active-exact-class="active"
         >
           <i class="bi bi-caret-right"></i> Contratos
         </router-link>
         <router-link
           class="list-group-item list-group-item-action"
-          to="/home/servicos"
+          :to="{ name: 'servicos' }"
           active-exact-class="active"
         >
           <i class="bi bi-card-checklist"></i> Serviços
