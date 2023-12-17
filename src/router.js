@@ -23,13 +23,19 @@ const routes = [
   {
     path: '/home', //localhost:5173/home
     component: Home,
+    alias: '/app',
     children: [
       {
         path: 'vendas',
         component: Vendas,
         children: [
           { name: 'leads', path: 'leads', component: Leads },
-          { name: 'lead', path: 'lead/:id', component: Lead }, //feito com a aula anterior
+          {
+            name: 'lead',
+            path: 'lead/:id',
+            component: Lead,
+            alias: ['/l/:id', '/:id', '/pessoa/:id']
+          }, //feito com a aula anterior
           { name: 'contratos', path: 'contratos', component: Contratos },
           { name: 'vendaspadrao', path: '', component: VendasPadrao }
         ]
@@ -41,6 +47,7 @@ const routes = [
         children: [
           {
             name: 'servico',
+            alias: '/s/:id',
             path: ':id',
             components: {
               default: Servico,
