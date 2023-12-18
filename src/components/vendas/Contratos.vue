@@ -1,19 +1,48 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { onBeforeRouteUpdate } from 'vue-router'
 
 import ApiMixns from '@/mixins/ApiMixins'
 
 const { dados, getDadosApi } = ApiMixns()
+const parametrosDeRelacionamento = ref('_expand=lead&_expand=servico')
 
 onMounted(() => {
-  var url = 'http://localhost:3000/contratos?_expand=lead&_expand=servico'
+  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}`
   getDadosApi(url)
+})
+
+onBeforeRouteUpdate((to, from, next) => {
+  const queryParams = new URLSearchParams(to.query).toString()
+  console.log(to.query)
+  console.log(queryParams)
+  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}&${queryParams}`
+  console.log(url)
+  getDadosApi(url)
+  next()
 })
 </script>
 
 <template>
   <div>
     <h3>Contratos</h3>
+
+    <router-link class="btn btn-primary" :to="{ name: 'contratos', query: { leadId_like: 1 } }"
+      >LeadId = 1</router-link
+    >&nbsp;
+    <router-link class="btn btn-primary" to="/home/vendas/contratos?servicoId_like=2">
+      ServicoId = 2</router-link
+    >&nbsp;
+
+    <router-link
+      class="btn btn-success"
+      :to="{ name: 'contratos', query: { leadId_like: 1, servicoId_like: 2 } }"
+      >LeadId = 1 e ServicoId = 2</router-link
+    >&nbsp;
+    <router-link class="btn btn-success" to="/home/vendas/contratos?servicoId_like=2&leadId_like=2"
+      >ServicoId = 1 e LeadId = 2</router-link
+    >&nbsp;
+
     <table class="table table-hover">
       <thead>
         <tr>
