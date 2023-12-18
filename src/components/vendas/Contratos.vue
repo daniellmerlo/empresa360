@@ -6,7 +6,7 @@ import ApiMixns from '@/mixins/ApiMixins'
 const { dados, getDadosApi } = ApiMixns()
 
 onMounted(() => {
-  var url = 'http://localhost:3000/contratos'
+  var url = 'http://localhost:3000/contratos?_expand=lead&_expand=servico'
   getDadosApi(url)
 })
 </script>
@@ -28,8 +28,8 @@ onMounted(() => {
       <tbody>
         <tr v-for="item in dados" :key="item.id">
           <td>{{ item.id }}</td>
-          <td>{{ item.leadId }}</td>
-          <td>{{ item.servicoId }}</td>
+          <td>{{ item.lead.nome }}</td>
+          <td>{{ item.servico.servico }}</td>
           <td>{{ item.data_inicio }}</td>
           <td>{{ item.data_fim }}</td>
           <td></td>
