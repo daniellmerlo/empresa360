@@ -14,9 +14,11 @@ import Opcoes from '@/components/servicos/Opcoes.vue'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Site from '@/views/Site.vue'
+import PaginaNaoEncontrada from '@/views/PaginaNaoEncontrada.vue'
 
 const routes = [
   {
+    name: 'raiz',
     path: '/', //localhost:5173/
     component: Site
   },
@@ -78,7 +80,9 @@ const routes = [
       console.log(to)
       return { name: 'vendaspadrao' }
     }
-  }
+  },
+  //{ path: '/:catchAll(.*)*', redirect: '/' }
+  { path: '/:catchAll(.*)*', component: PaginaNaoEncontrada }
 ]
 
 const router = createRouter({
