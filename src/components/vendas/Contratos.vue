@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { onBeforeRouteUpdate } from 'vue-router'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 
 import ApiMixns from '@/mixins/ApiMixins'
 
@@ -8,7 +8,9 @@ const { dados, getDadosApi } = ApiMixns()
 const parametrosDeRelacionamento = ref('_expand=lead&_expand=servico')
 
 onMounted(() => {
-  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}`
+  const route = useRoute()
+  const queryParams = new URLSearchParams(route.query).toString()
+  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}&${queryParams}`
   getDadosApi(url)
 })
 
