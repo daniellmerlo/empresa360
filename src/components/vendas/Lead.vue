@@ -16,6 +16,7 @@ function voltar() {
 }
 
 onMounted(() => {
+  console.log(props)
   var url = `http://localhost:3000/leads/${props.id}`
   getDadosApi(url)
 })
