@@ -6,9 +6,22 @@ import ApiMixns from '@/mixins/ApiMixins'
 
 const { dados, getDadosApi } = ApiMixns()
 const parametrosDeRelacionamento = ref('_expand=lead&_expand=servico')
+const formPesquisa = ref({
+  id_like: '',
+  data_inicio_gte: '',
+  data_inicio_lte: ''
+})
 
 //URL para Filtros novo Formulario:
 //http://localhost:3000/contratos?_expand=lead&_expand=servico&id_like=3&data_inicio_gte=2022-01-01&data_inicio_lte=2023-12-31
+
+function pesquisar() {
+  console.log(formPesquisa.value)
+  const queryParams = new URLSearchParams(formPesquisa.value).toString()
+  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}&${queryParams}`
+  getDadosApi(url)
+  console.log(queryParams)
+}
 
 onMounted(() => {
   const route = useRoute()
@@ -36,19 +49,19 @@ onBeforeRouteUpdate((to, from, next) => {
         <div class="row">
           <div class="col-6">
             <label class="form-label">ID Contrato:</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" v-model="formPesquisa.id_like" />
           </div>
           <div class="col-6">
             <label class="form-label">Data início:</label>
             <div class="input-group">
-              <input type="date" class="form-control" />
-              <input type="date" class="form-control" />
+              <input type="date" class="form-control" v-model="formPesquisa.data_inicio_gte" />
+              <input type="date" class="form-control" v-model="formPesquisa.data_inicio_lte" />
             </div>
           </div>
         </div>
       </div>
       <div class="card-footer">
-        <button type="button" class="btn btn-primary">Pesquisar</button>
+        <button type="button" class="btn btn-primary" @click="pesquisar">Pesquisar</button>
       </div>
     </div>
 
