@@ -16,34 +16,19 @@ const formPesquisa = ref({
 //http://localhost:3000/contratos?_expand=lead&_expand=servico&id_like=3&data_inicio_gte=2022-01-01&data_inicio_lte=2023-12-31
 
 function pesquisar() {
-  console.log(formPesquisa.value)
-
-  Object.keys(formPesquisa.value).forEach(chave => {
-    if (formPesquisa.value[chave] == '') {
-      delete formPesquisa.value[chave]
-    }
-  })
-  console.log(formPesquisa.value)
-  const queryParams = new URLSearchParams(formPesquisa.value).toString()
-  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}&${queryParams}`
-  getDadosApi(url)
-  console.log(queryParams)
+  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}`
+  getDadosApi(url, formPesquisa.value)
 }
 
 onMounted(() => {
   const route = useRoute()
-  const queryParams = new URLSearchParams(route.query).toString()
-  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}&${queryParams}`
-  getDadosApi(url)
+  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}`
+  getDadosApi(url, route.query)
 })
 
 onBeforeRouteUpdate((to, from, next) => {
-  const queryParams = new URLSearchParams(to.query).toString()
-  console.log(to.query)
-  console.log(queryParams)
-  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}&${queryParams}`
-  console.log(url)
-  getDadosApi(url)
+  const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}`
+  getDadosApi(url, to.query)
   next()
 })
 </script>
