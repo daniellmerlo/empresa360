@@ -1,12 +1,15 @@
 <script setup>
 //import { onMounted, watch } from 'vue'
 import { onMounted } from 'vue'
-import { onBeforeRouteUpdate, useRoute } from 'vue-router'
+import { onBeforeRouteUpdate } from 'vue-router'
 import ApiMixns from '@/mixins/ApiMixins'
 
 const { dados, getDadosApi } = ApiMixns()
 
-const route = useRoute()
+//const route = useRoute()
+const props = defineProps({
+  id: String
+})
 
 onBeforeRouteUpdate((to, from, next) => {
   if (to.params.id != undefined) {
@@ -27,7 +30,9 @@ watch(route, (to) => {
 */
 
 onMounted(() => {
-  var url = `http://localhost:3000/servicos/${route.params.id}`
+  //console.log('Via Props', props.id)
+  //console.log('Serviço', route.params.id)
+  var url = `http://localhost:3000/servicos/${props.id}`
   getDadosApi(url)
 })
 </script>
