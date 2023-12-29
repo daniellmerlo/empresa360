@@ -34,9 +34,10 @@ const routes = [
           { name: 'leads', path: 'leads', component: Leads },
           {
             name: 'lead',
-            path: 'lead/:id',
+            props: true,
+            path: 'lead/:id/:outroParametro',
             component: Lead,
-            alias: ['/l/:id', '/:id', '/pessoa/:id']
+            alias: ['/l/:id/:outroParametro', '/:id/:outroParametro', '/pessoa/:id/:outroParametro']
           }, //feito com a aula anterior
           { name: 'contratos', path: 'contratos', component: Contratos },
           { name: 'vendaspadrao', path: '', component: VendasPadrao }

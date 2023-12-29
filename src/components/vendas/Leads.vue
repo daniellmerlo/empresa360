@@ -30,7 +30,7 @@ onMounted(() => {
           <td>{{ item.telefone }}</td>
           <td>
             <router-link
-              :to="{ name: 'lead', params: { id: item.id } }"
+              :to="{ name: 'lead', params: { id: item.id, outroParametro: `teste_${item.id}` } }"
               class="btn btn-sm btn-primary"
             >
               <i class="bi bi-pencil-square" style="cursor: pointer"></i>

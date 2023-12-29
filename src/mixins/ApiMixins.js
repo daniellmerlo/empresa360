@@ -4,7 +4,6 @@ export default function ApiMixins() {
   const dados = ref({})
 
   function getDadosApi(url, queryParams = {}) {
-
     Object.keys(queryParams).forEach((chave) => {
       if (queryParams[chave] == '') {
         delete queryParams[chave]

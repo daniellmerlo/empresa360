@@ -1,19 +1,22 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import ApiMixns from '@/mixins/ApiMixins'
 
 const { dados, getDadosApi } = ApiMixns()
 
-const route = useRoute()
 const router = useRouter()
+const props = defineProps({
+  id: String,
+  outroParametro: String
+})
 
 function voltar() {
   router.push({ name: 'leads' })
 }
 
 onMounted(() => {
-  var url = `http://localhost:3000/leads/${route.params.id}`
+  var url = `http://localhost:3000/leads/${props.id}`
   getDadosApi(url)
 })
 </script>
