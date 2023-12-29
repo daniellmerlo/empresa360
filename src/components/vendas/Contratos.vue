@@ -17,6 +17,13 @@ const formPesquisa = ref({
 
 function pesquisar() {
   console.log(formPesquisa.value)
+
+  Object.keys(formPesquisa.value).forEach(chave => {
+    if (formPesquisa.value[chave] == '') {
+      delete formPesquisa.value[chave]
+    }
+  })
+  console.log(formPesquisa.value)
   const queryParams = new URLSearchParams(formPesquisa.value).toString()
   const url = `http://localhost:3000/contratos?${parametrosDeRelacionamento.value}&${queryParams}`
   getDadosApi(url)
