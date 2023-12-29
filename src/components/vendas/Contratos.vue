@@ -7,6 +7,9 @@ import ApiMixns from '@/mixins/ApiMixins'
 const { dados, getDadosApi } = ApiMixns()
 const parametrosDeRelacionamento = ref('_expand=lead&_expand=servico')
 
+//URL para Filtros novo Formulario:
+//http://localhost:3000/contratos?_expand=lead&_expand=servico&id_like=3&data_inicio_gte=2022-01-01&data_inicio_lte=2023-12-31
+
 onMounted(() => {
   const route = useRoute()
   const queryParams = new URLSearchParams(route.query).toString()
