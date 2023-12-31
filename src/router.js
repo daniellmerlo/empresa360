@@ -112,4 +112,10 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to, from) => {
+  console.log('Origem: ', from)
+  console.log('Destino: ', to)
+  console.log('Método executado antes do acesso a rota destino')
+})
+
 export default router
