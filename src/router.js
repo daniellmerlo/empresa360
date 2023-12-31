@@ -16,6 +16,8 @@ import Login from '@/views/Login.vue'
 import Site from '@/views/Site.vue'
 import PaginaNaoEncontrada from '@/views/PaginaNaoEncontrada.vue'
 
+//Guardas de Rotas
+
 const routes = [
   {
     name: 'raiz',
