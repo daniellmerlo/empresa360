@@ -34,10 +34,21 @@ const routes = [
           { name: 'leads', path: 'leads', component: Leads },
           {
             name: 'lead',
+            props: true,
+            /*
             props: {
               id: '5',
               outroParametro: 'teste_5'
             },
+            props: route => {
+              console.log('Rota ativa:', route)
+              let teste = route.query.idioma ? route.query.idioma : route.params.outroParametro
+              return {
+                id: (parseInt(route.params.id) + 1).toString(),
+                outroParametro: teste
+              }
+            },
+            */
             path: 'lead/:id/:outroParametro',
             component: Lead,
             alias: ['/l/:id/:outroParametro', '/:id/:outroParametro', '/pessoa/:id/:outroParametro']
