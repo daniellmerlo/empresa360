@@ -22,10 +22,16 @@ const routes = [
   {
     name: 'raiz',
     path: '/', //localhost:5173/
-    component: Site
+    component: Site,
+    meta: {
+      requerAutorizacao: false
+    }
   },
   {
     path: '/home', //localhost:5173/home
+    meta: {
+      requerAutorizacao: true
+    },
     component: Home,
     alias: '/app',
     children: [
@@ -90,7 +96,12 @@ const routes = [
   },
   {
     path: '/login', //localhost:5173/login
-    component: Login
+    component: Login,
+    meta: {
+      requerAutorizacao: false,
+      campo2: 'teste',
+      campo3: 50
+    }
   },
   { path: '/redirecionamento-1', redirect: '/home/servicos' },
   { path: '/redirecionamento-2', redirect: { name: 'leads' } },
@@ -112,10 +123,13 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from) => {
-  console.log('Origem: ', from)
-  console.log('Destino: ', to)
-  console.log('Método executado antes do acesso a rota destino')
+router.beforeEach(to => {
+  if (to.meta.requerAutorizacao) {
+    console.log('Validar o acesso')
+  } else {
+    console.log('Apenas seguir com a navegacao')
+  }
+
 })
 
 export default router
