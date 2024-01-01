@@ -39,9 +39,9 @@ const routes = [
         path: 'vendas',
         component: Vendas,
         children: [
-          { 
-            name: 'leads', 
-            path: 'leads', 
+          {
+            name: 'leads',
+            path: 'leads',
             component: Leads,
             //beforeEnter(to, from, next) {
             beforeEnter() {

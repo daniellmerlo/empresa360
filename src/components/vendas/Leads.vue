@@ -1,7 +1,8 @@
 <script setup>
-import { onMounted, beforeRouteEnter } from 'vue'
+import { onMounted } from 'vue'
 
 import ApiMixns from '@/mixins/ApiMixins'
+import { onBeforeRouteLeave } from 'vue-router'
 
 const { dados, getDadosApi } = ApiMixns()
 
@@ -10,10 +11,17 @@ onMounted(() => {
   getDadosApi(url)
 })
 
+/*
+Não funciona no Compositon
 //beforeRouteEnter (to, from, next) {
 beforeRouteEnter() {
   console.log('Guarda de componente beforeRouteEnter')
 }
+*/
+//onBeforeRouteLeave((to, from, next) => {
+onBeforeRouteLeave(() => {
+  console.log('Gurada de componente beforRouteLeave')
+})
 </script>
 
 <template>

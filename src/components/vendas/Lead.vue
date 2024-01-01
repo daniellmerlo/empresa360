@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, onBeforeRouteLeave } from 'vue-router'
 import ApiMixns from '@/mixins/ApiMixins'
 
 const { dados, getDadosApi } = ApiMixns()
@@ -19,6 +19,11 @@ onMounted(() => {
   console.log(props)
   var url = `http://localhost:3000/leads/${props.id}`
   getDadosApi(url)
+})
+
+onBeforeRouteLeave(() => {
+  const confirmar = window.confirm('Deseja sair do formulário')
+  return confirmar
 })
 </script>
 
