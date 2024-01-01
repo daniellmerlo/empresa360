@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
+import { onBeforeRouteUpdate } from 'vue-router'
 //import { useRoute } from 'vue-router'
 
 //const route = useRoute()
@@ -10,6 +11,12 @@ const props = defineProps({
 onMounted(() => {
   console.log('Opçoes', props.id)
 })
+
+//onBeforeRouteUpdate((to, from, next) => {
+onBeforeRouteUpdate(() => {
+  console.log('Guarda de componente onBeforRouteUpdate')
+})
+
 </script>
 
 <template>
