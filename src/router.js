@@ -129,9 +129,15 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  scrollBehavior(to) {
+  scrollBehavior(to, from, savedPosition) {
     //return { left: 0, top: 15 } //left = x, top = y
     console.log(to.hash)
+    console.log(from)
+    console.log(savedPosition)
+
+    if (savedPosition) {
+      return savedPosition
+    }
 
     if (to.hash) {
       return { el: to.hash} //to.hash deve corresponder a um id de elemento HTML
