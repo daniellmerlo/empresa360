@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, beforeRouteEnter } from 'vue'
 
 import ApiMixns from '@/mixins/ApiMixins'
 
@@ -9,6 +9,11 @@ onMounted(() => {
   var url = 'http://localhost:3000/leads'
   getDadosApi(url)
 })
+
+//beforeRouteEnter (to, from, next) {
+beforeRouteEnter() {
+  console.log('Guarda de componente beforeRouteEnter')
+}
 </script>
 
 <template>
