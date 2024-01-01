@@ -142,4 +142,8 @@ router.afterEach(() => {
   console.log('Guarda global afterEach')
 })
 
+router.beforeResolve(() => {
+  console.log('Guarda gobal beforeResolve')
+})
+
 export default router
