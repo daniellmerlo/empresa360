@@ -129,24 +129,32 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  scrollBehavior() {
-    return { left: 0, top: 15 } //left = x, top = y
+  scrollBehavior(to) {
+    //return { left: 0, top: 15 } //left = x, top = y
+    console.log(to.hash)
+
+    if (to.hash) {
+      return { el: to.hash} //to.hash deve corresponder a um id de elemento HTML
+      //fragmento = #secao_1 => id = secao_1
+    }
+
+    return { left: 0, top: 0 }
   },
   routes
 })
 
 //router.beforeEach((to, from, next) => {
 router.beforeEach(() => {
-  console.log('Guarda global befoeEach')
+  //console.log('Guarda global befoeEach')
 })
 
 //router.afterEach((to, from, next) => {
 router.afterEach(() => {
-  console.log('Guarda global afterEach')
+  //console.log('Guarda global afterEach')
 })
 
 router.beforeResolve(() => {
-  console.log('Guarda gobal beforeResolve')
+  //console.log('Guarda gobal beforeResolve')
 })
 
 export default router
